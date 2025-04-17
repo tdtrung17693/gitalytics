@@ -1,16 +1,30 @@
 ---
-import '../styles/global.css';
-const { content } = Astro.props;
+import "@/styles/globals.css";
+import Layout from "../components/layout.tsx";
+
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Gitlytics - GitHub Analytics" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {
+      plausibleDomain && (
+        <script
+          defer
+          data-domain={plausibleDomain}
+          src="https://plausible.io/js/script.js"
+        />
+      )
+    }
+  </head>
+  <body>
+    <Layout client:only>
+      <slot />
+    </Layout>
+  </body>
 </html>
