@@ -1,6 +1,7 @@
 ---
 import "@/styles/globals.css";
 import Layout from "../components/layout.tsx";
+import Analytics from "@vercel/analytics/astro";
 
 const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 ---
@@ -26,5 +27,6 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
     <Layout client:only>
       <slot />
     </Layout>
+    <Analytics />
   </body>
 </html>
