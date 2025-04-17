@@ -22,11 +22,11 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
         />
       )
     }
+    <Analytics />
   </head>
   <body>
     <Layout client:only>
       <slot />
     </Layout>
-    <Analytics />
   </body>
 </html>
